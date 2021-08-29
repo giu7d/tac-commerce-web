@@ -3,34 +3,38 @@
   @apply text-sm font-semibold;
 }
 
-.btn.btn-sm {
+.btn.btn_sm {
   @apply px-4 py-2;
 }
 
-.btn.btn-md {
+.btn.btn_md {
   @apply px-6 py-2 gap-2;
 }
 
-.btn.btn-icon {
+.btn.btn_lg {
+  @apply px-6 py-4 gap-2 text-xl;
+}
+
+.btn.btn_icon {
   @apply w-10 h-10;
 }
 
-.btn.btn-outline {
+.btn.btn_outline {
   @apply border border-gray-100 text-gray-500;
 }
 
-.btn.btn-solid {
+.btn.btn_solid {
   @apply bg-gray-800 text-white;
 }
 
-.btn.btn-solid.btn-primary {
+.btn.btn_solid.btn_primary {
   @apply bg-red-400 text-white;
 }
 
-.btn.btn-primary {
+.btn.btn_primary {
   @apply bg-red-50 text-red-400;
 }
 
-.btn.btn-number {
+.btn.btn_number {
   @apply hover:opacity-100 bg-gray-700 text-white;
 }

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-import { FilterButton } from '@/components/fragments/buttons/FilterButton'
+import { FilterButton } from '@/components/fragments/buttons/Filter'
 
 const FILTERS = [
   {
@@ -25,7 +25,7 @@ export const FilterProducts = () => {
   const [selectedFilter, setSelectedFilter] = useState('all')
 
   return (
-    <nav className="filters mt-10">
+    <nav className="flex flex-row gap-2 my-12 w-full overflow-auto mt-10">
       {FILTERS.map(filter => (
         <FilterButton
           key={filter.key}

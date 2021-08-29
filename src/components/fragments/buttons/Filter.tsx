@@ -15,7 +15,7 @@ export const FilterButton: React.FC<IFilterButtonProps> = ({
   ...props
 }) => (
   <button
-    className={`btn btn-sm ${selected ? 'btn-solid' : 'btn-outline'}`}
+    className={`btn btn_sm ${selected ? 'btn_solid' : 'btn_outline'}`}
     type={type}
     {...props}
   >

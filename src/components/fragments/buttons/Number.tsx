@@ -11,12 +11,12 @@ export const NumberButton: React.FC<INumberButtonProps> = ({
   onMinus = () => {},
   onPlus = () => {}
 }) => (
-  <div className="btn btn-number">
-    <button className="btn btn-icon" onClick={onMinus}>
+  <div className="btn btn_number">
+    <button className="btn btn_icon" onClick={onMinus}>
       <FiMinus />
     </button>
     <p>{children}</p>
-    <button className="btn btn-icon" onClick={onPlus}>
+    <button className="btn btn_icon" onClick={onPlus}>
       <FiPlus />
     </button>
   </div>

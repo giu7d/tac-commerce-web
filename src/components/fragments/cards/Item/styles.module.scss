@@ -1,0 +1,23 @@
+.item_card {
+  @apply flex flex-row flex-1 gap-6;
+
+  .item_card_cover {
+    @apply bg-blue-100 rounded-3xl flex items-center justify-center w-28 h-28;
+  }
+
+  .item_card_content {
+    @apply flex flex-col justify-between justify-self-start;
+
+    h4 {
+      @apply text-xs font-semibold uppercase text-gray-400;
+    }
+
+    h3 {
+      @apply text-lg font-semibold capitalize text-gray-800;
+    }
+  }
+
+  .item_card_actions {
+    @apply flex flex-col flex-1 flex-grow justify-self-end justify-between items-end;
+  }
+}

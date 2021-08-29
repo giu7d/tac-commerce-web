@@ -1,7 +1,7 @@
 import React from 'react'
-import { useRouter } from 'next/dist/client/router'
+import { useRouter } from 'next/router'
 
-import { ProductCard } from '@/components/fragments/cards/ProductCard'
+import { ProductCard } from '@/components/fragments/cards/Product'
 
 const PRODUCTS = [
   {

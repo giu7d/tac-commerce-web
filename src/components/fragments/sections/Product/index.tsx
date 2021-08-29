@@ -3,6 +3,8 @@ import Image from 'next/image'
 
 import { Product } from '@/models/Product'
 
+import styles from './styles.module.scss'
+
 interface IProductSectionProps {
   product: Product
 }
@@ -11,7 +13,7 @@ export const ProductSection: React.VFC<IProductSectionProps> = ({
   product
 }) => (
   <>
-    <div className="product-cover">
+    <div className={styles.product_section}>
       <Image src={{ src: product.imageSrc, width: 300, height: 300 }} />
     </div>
     <div className="flex flex-col items-center">

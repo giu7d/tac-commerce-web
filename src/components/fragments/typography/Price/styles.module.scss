@@ -1,0 +1,25 @@
+.price {
+  @apply flex flex-row price_md;
+}
+
+.price_sm {
+  span,
+  small {
+    @apply text-sm;
+  }
+
+  h5 {
+    @apply text-xl font-bold;
+  }
+}
+
+.price_md {
+  small,
+  span {
+    @apply text-lg;
+  }
+
+  h5 {
+    @apply text-3xl font-bold;
+  }
+}

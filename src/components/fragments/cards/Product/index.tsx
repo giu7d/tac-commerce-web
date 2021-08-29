@@ -1,8 +1,11 @@
 import React from 'react'
+import { FiInfo, FiPlus } from 'react-icons/fi'
 import Image from 'next/image'
 
-import { FiInfo, FiPlus } from 'react-icons/fi'
 import { Product } from '@/models/Product'
+import { PriceTypography } from '@/components/fragments/typography/Price'
+
+import styles from './styles.module.scss'
 
 interface IProductCardProps {
   product: Product
@@ -15,9 +18,9 @@ export const ProductCard: React.VFC<IProductCardProps> = ({
   onSave = () => {},
   onClick = () => {}
 }) => (
-  <div className="card">
+  <div className={styles.product_card}>
     <div
-      className={`card-cover bg-${product.thumbnailPrimaryColor}-50`}
+      className={`${styles.product_card_cover} bg-${product.thumbnailPrimaryColor}-50`}
       onClick={onClick}
     >
       <Image
@@ -28,29 +31,23 @@ export const ProductCard: React.VFC<IProductCardProps> = ({
         }}
       />
     </div>
-    <div className="card-content product-card-content">
+    <div className={styles.product_card_content}>
       <div>
-        <small className="product-brand">{product.brand}</small>
-        <h4 className="product-name">{product.name}</h4>
+        <small className={styles.product_brand}>{product.brand}</small>
+        <h4 className={styles.product_name}>{product.name}</h4>
       </div>
-      <div className="price">
-        <small>R$</small>
-        <h5>
-          {product.price}
-          <span>.99</span>
-        </h5>
-      </div>
+      <PriceTypography value={product.price} />
     </div>
-    <div className="card-actions">
+    <div className={styles.product_card_actions}>
       <button
         type="button"
-        className="btn btn-md btn-outline"
+        className="btn btn_md btn_outline"
         onClick={onClick}
       >
         <FiInfo />
         Mais
       </button>
-      <button type="button" className="btn btn-md btn-primary" onClick={onSave}>
+      <button type="button" className="btn btn_md btn_primary" onClick={onSave}>
         <FiPlus />
         Adicionar
       </button>

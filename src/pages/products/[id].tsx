@@ -2,7 +2,7 @@ import React from 'react'
 
 import { Header } from '@/components/containers/Header'
 import { BuyProduct } from '@/components/containers/Product/Buy'
-import { ProductSection } from '@/components/fragments/sections/ProductSection'
+import { ProductSection } from '@/components/fragments/sections/Product'
 import { ParagraphSection } from '@/components/fragments/sections/ParagraphSection'
 
 const PRODUCT = {
@@ -14,7 +14,7 @@ const PRODUCT = {
   thumbnailPrimaryColor: 'yellow'
 }
 
-export default function ShowProduct() {
+export default function Product() {
   // const router = useRouter()
   // console.log(router.query.id)
 

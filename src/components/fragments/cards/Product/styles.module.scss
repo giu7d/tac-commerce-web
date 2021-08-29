@@ -1,0 +1,23 @@
+.product_card {
+  @apply flex flex-col rounded-3xl overflow-hidden;
+}
+
+.product_card_cover {
+  @apply flex items-center justify-center p-6;
+}
+
+.product_card_content {
+  @apply flex flex-row items-center justify-between p-6 text-gray-800;
+
+  .product_brand {
+    @apply font-semibold uppercase text-gray-500;
+  }
+
+  .product_name {
+    @apply font-semibold uppercase;
+  }
+}
+
+.product_card_actions {
+  @apply flex flex-row p-6 pt-0 gap-6 justify-end;
+}
