@@ -6,6 +6,12 @@ import '@/styles/product.scss'
 import React from 'react'
 import type { AppProps } from 'next/app'
 
+import { ApplicationStore } from '@/stores/ApplicationStore'
+
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return (
+    <ApplicationStore>
+      <Component {...pageProps} />
+    </ApplicationStore>
+  )
 }

@@ -1,8 +1,8 @@
 import React from 'react'
 
-import { ItemCard } from '@/components/fragments/cards/Item'
-import { CheckoutCard } from '@/components/fragments/cards/Checkout'
 import { Header } from '@/components/fragments/headers'
+import { CheckoutCard } from '@/components/fragments/cards/Checkout'
+import { ListItemsOrder } from '@/components/containers/Orders/ListItems'
 
 export default function Order() {
   return (
@@ -12,9 +12,7 @@ export default function Order() {
           Meus Pedidos
         </h2>
       </Header>
-      <div className="flex flex-col gap-6 p-6">
-        <ItemCard />
-      </div>
+      <ListItemsOrder />
       <CheckoutCard total="10.00" />
     </div>
   )
