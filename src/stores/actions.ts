@@ -1,13 +1,19 @@
 import { OrderItem } from '@/models/OrderItem'
 
 export const Actions = {
+  SET_SELECTED_CATEGORY: 'SET_SELECTED_CATEGORY',
   SET_ORDER_PRODUCTS: 'SET_ORDER_PRODUCTS',
   RESET: 'RESET'
 }
 
-export const setOrderProducts = (limit: OrderItem[]) => ({
+export const setOrderProducts = (payload: OrderItem[]) => ({
   type: Actions.SET_ORDER_PRODUCTS,
-  payload: limit
+  payload
+})
+
+export const setSelectedCategory = (payload: string) => ({
+  type: Actions.SET_SELECTED_CATEGORY,
+  payload
 })
 
 export const reset = () => ({

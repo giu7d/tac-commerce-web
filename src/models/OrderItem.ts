@@ -1,6 +1,8 @@
+import { Product } from './Product'
+
 export interface OrderItem {
   id: string
-  productId: string
+  product: Product
   name: string
   brand: string
   price: string

@@ -1,16 +1,17 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
+import { v4 } from 'uuid'
 
+import { useRouter } from 'next/router'
 import { BuyButton } from '@/components/fragments/buttons/Buy'
 import { NumberButton } from '@/components/fragments/buttons/Number'
 import { useOrder } from '@/hooks/useOrder'
+import { useProduct } from '@/hooks/useProduct'
 
 export const BuyProduct = () => {
-  const [quantity, setQuantity] = useState(1)
   const order = useOrder()
-
-  useEffect(() => {
-    console.log(order.order)
-  }, [order.order])
+  const router = useRouter()
+  const [quantity, setQuantity] = useState(1)
+  const { product, isLoading, isError } = useProduct(router.query.id as string)
 
   const handleQuantity = (value: number) => {
     if (quantity + value < 1) return
@@ -18,14 +19,27 @@ export const BuyProduct = () => {
   }
 
   const handleAddToCart = () => {
+    if (!product) return
+
     order.add({
-      id: '123123123',
-      productId: '123123123',
-      brand: 'sony',
-      name: 'apple',
-      price: '123',
+      ...product,
+      id: v4(),
+      product,
       quantity
     })
+
+    router.push('/')
+  }
+
+  const calculatePrice = () => {
+    const unitPrice = Number.parseInt(product?.price || '0', 10)
+    const totalPrice = unitPrice * quantity
+
+    return totalPrice.toString()
+  }
+
+  if (isError || isLoading) {
+    return <div>loading</div>
   }
 
   return (
@@ -36,7 +50,7 @@ export const BuyProduct = () => {
       >
         {quantity}
       </NumberButton>
-      <BuyButton price="1999.00" onClick={handleAddToCart} />
+      <BuyButton price={calculatePrice()} onClick={handleAddToCart} />
     </div>
   )
 }

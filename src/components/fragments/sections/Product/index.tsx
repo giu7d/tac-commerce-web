@@ -13,7 +13,9 @@ export const ProductSection: React.VFC<IProductSectionProps> = ({
   product
 }) => (
   <>
-    <div className={styles.product_section}>
+    <div
+      className={`${styles.product_section} bg-${product.thumbnailPrimaryColor}-100`}
+    >
       <Image src={{ src: product.imageSrc, width: 300, height: 300 }} />
     </div>
     <div className="flex flex-col items-center">

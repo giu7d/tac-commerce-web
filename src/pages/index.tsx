@@ -19,8 +19,10 @@ export default function Home() {
           productImage="/images/apple-watch.png"
           off={15}
         />
-        <FilterProducts />
-        <ListProducts />
+        <div className="pt-6">
+          <FilterProducts />
+          <ListProducts />
+        </div>
       </main>
     </div>
   )

@@ -2,7 +2,9 @@
   @apply flex flex-row flex-1 gap-6;
 
   .item_card_cover {
-    @apply bg-blue-100 rounded-3xl flex items-center justify-center w-28 h-28;
+    @apply rounded-3xl flex items-center justify-center;
+    min-width: 7rem;
+    min-height: 7rem;
   }
 
   .item_card_content {

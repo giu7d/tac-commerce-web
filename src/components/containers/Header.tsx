@@ -3,9 +3,11 @@ import React from 'react'
 import { FiShoppingCart } from 'react-icons/fi'
 import { SearchInput } from '@/components/fragments/inputs/SearchInput'
 import { Header as HeaderComponent } from '@/components/fragments/headers'
+import { useOrder } from '@/hooks/useOrder'
 
 export const Header = () => {
   const router = useRouter()
+  const order = useOrder()
 
   const goToOrder = () => {
     router.push('/order')
@@ -19,6 +21,7 @@ export const Header = () => {
         className="btn btn_icon btn_outline"
         onClick={goToOrder}
       >
+        {order.order.length}
         <FiShoppingCart />
       </button>
       <button type="button" className="btn btn_icon btn_primary">

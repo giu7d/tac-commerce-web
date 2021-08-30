@@ -1,28 +1,25 @@
 import React from 'react'
+import { useRouter } from 'next/router'
 
+import { useProduct } from '@/hooks/useProduct'
 import { Header } from '@/components/containers/Header'
 import { BuyProduct } from '@/components/containers/Product/Buy'
 import { ProductSection } from '@/components/fragments/sections/Product'
 import { ParagraphSection } from '@/components/fragments/sections/ParagraphSection'
 
-const PRODUCT = {
-  id: '123123',
-  brand: 'sony',
-  name: 'wh1000',
-  price: '1099.99',
-  imageSrc: '/images/sony-wh1000.png',
-  thumbnailPrimaryColor: 'yellow'
-}
-
 export default function Product() {
-  // const router = useRouter()
-  // console.log(router.query.id)
+  const router = useRouter()
+  const { product, isLoading, isError } = useProduct(router.query.id as string)
+
+  if (!product || isError || isLoading) {
+    return <div>loading</div>
+  }
 
   return (
     <div className="container lg:max-w-screen-lg">
       <Header />
       <div className="flex flex-col gap-6 p-6">
-        <ProductSection product={PRODUCT} />
+        <ProductSection product={product} />
         <ParagraphSection title="Descrição">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed ratione,
           voluptatum minima, quibusdam rem animi non cumque maiores omnis sit

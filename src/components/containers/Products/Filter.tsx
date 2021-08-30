@@ -1,38 +1,28 @@
-import React, { useState } from 'react'
+import React from 'react'
 
 import { FilterButton } from '@/components/fragments/buttons/Filter'
-
-const FILTERS = [
-  {
-    key: 'all',
-    name: 'Todos'
-  },
-  {
-    key: 'smart-phones',
-    name: 'Smart Phones'
-  },
-  {
-    key: 'smart-home',
-    name: 'Smart Home'
-  },
-  {
-    key: 'headphones',
-    name: 'Headphones'
-  }
-]
+import { useCategories } from '@/hooks/useCategories'
 
 export const FilterProducts = () => {
-  const [selectedFilter, setSelectedFilter] = useState('all')
+  const { categories, category, setCategory, isError, isLoading } =
+    useCategories()
+
+  if (isError || isLoading) {
+    return <div>loading</div>
+  }
 
   return (
     <nav className="flex flex-row gap-2 my-12 w-full overflow-auto mt-10">
-      {FILTERS.map(filter => (
+      <FilterButton selected={category === ''} onClick={() => setCategory('')}>
+        All
+      </FilterButton>
+      {categories.map(filter => (
         <FilterButton
-          key={filter.key}
-          selected={filter.key === selectedFilter}
-          onClick={() => setSelectedFilter(filter.key)}
+          key={filter}
+          selected={filter === category}
+          onClick={() => setCategory(filter)}
         >
-          {filter.name}
+          {filter}
         </FilterButton>
       ))}
     </nav>

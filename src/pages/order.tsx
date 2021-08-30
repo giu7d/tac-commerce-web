@@ -1,8 +1,8 @@
 import React from 'react'
 
 import { Header } from '@/components/fragments/headers'
-import { CheckoutCard } from '@/components/fragments/cards/Checkout'
 import { ListItemsOrder } from '@/components/containers/Orders/ListItems'
+import { Checkout } from '@/components/containers/Orders/Checkout'
 
 export default function Order() {
   return (
@@ -13,7 +13,7 @@ export default function Order() {
         </h2>
       </Header>
       <ListItemsOrder />
-      <CheckoutCard total="10.00" />
+      <Checkout />
     </div>
   )
 }

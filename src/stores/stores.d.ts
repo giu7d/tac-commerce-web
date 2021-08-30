@@ -8,6 +8,7 @@ export interface IAction {
 
 export interface IApplicationStore {
   orderProducts: OrderItem[]
+  selectedCategory: string
   account: any
 }
 

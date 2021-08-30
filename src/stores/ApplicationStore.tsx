@@ -1,8 +1,9 @@
 import React, { createContext, useReducer } from 'react'
-import { IApplicationStore, IContext } from './types'
+import { IApplicationStore, IContext } from './stores'
 import { reducer } from './reducer'
 
 export const initialState: IApplicationStore = {
+  selectedCategory: '',
   orderProducts: [],
   account: {}
 }

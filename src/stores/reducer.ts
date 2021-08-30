@@ -1,5 +1,5 @@
 import { Actions } from './actions'
-import { IAction, IApplicationStore } from './types'
+import { IAction, IApplicationStore } from './stores'
 
 export const reducer = (
   state: IApplicationStore,
@@ -10,6 +10,12 @@ export const reducer = (
       return {
         ...state,
         orderProducts: action.payload
+      }
+
+    case Actions.SET_SELECTED_CATEGORY:
+      return {
+        ...state,
+        selectedCategory: action.payload
       }
 
     default:

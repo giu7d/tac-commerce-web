@@ -2,28 +2,15 @@ import React from 'react'
 import { useRouter } from 'next/router'
 
 import { ProductCard } from '@/components/fragments/cards/Product'
-
-const PRODUCTS = [
-  {
-    id: '123123',
-    brand: 'sony',
-    name: 'wh1000',
-    price: '1099.99',
-    imageSrc: '/images/sony-wh1000.png',
-    thumbnailPrimaryColor: 'yellow'
-  },
-  {
-    id: '123321',
-    brand: 'amazon',
-    name: 'echo dot',
-    price: '199.99',
-    imageSrc: '/images/amazon-echo-dot.png',
-    thumbnailPrimaryColor: 'blue'
-  }
-]
+import { useProducts } from '@/hooks/useProducts'
 
 export const ListProducts = () => {
   const router = useRouter()
+  const { products, isError, isLoading } = useProducts()
+
+  if (isError || isLoading) {
+    return <div>loading</div>
+  }
 
   const handleNavigation = (id: string) => {
     router.push(`/products/${id}`)
@@ -31,7 +18,7 @@ export const ListProducts = () => {
 
   return (
     <div className="flex flex-col gap-6">
-      {PRODUCTS.map(product => (
+      {products.map(product => (
         <ProductCard
           key={product.id}
           product={product}
