@@ -13,3 +13,15 @@ export interface IProductResponse {
   updatedAt: string
   deletedAt?: string
 }
+
+export interface IAuthResponse {
+  token: string
+}
+
+export interface IAccountResponse {
+  id: string
+  firstName: string
+  lastName: string
+  email: string
+  isAdmin: boolean
+}

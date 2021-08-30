@@ -5,7 +5,7 @@ import { reducer } from './reducer'
 export const initialState: IApplicationStore = {
   selectedCategory: '',
   orderProducts: [],
-  account: {}
+  account: undefined
 }
 
 export const ApplicationContext = createContext<IContext<IApplicationStore>>({

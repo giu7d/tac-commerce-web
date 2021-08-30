@@ -1,3 +1,5 @@
+/* eslint-disable import/no-cycle */
+import { initialState } from './ApplicationStore'
 import { Actions } from './actions'
 import { IAction, IApplicationStore } from './stores'
 
@@ -17,6 +19,15 @@ export const reducer = (
         ...state,
         selectedCategory: action.payload
       }
+
+    case Actions.SET_ACCOUNT:
+      return {
+        ...state,
+        account: action.payload
+      }
+
+    case Actions.RESET:
+      return initialState
 
     default:
       return state

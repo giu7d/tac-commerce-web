@@ -1,6 +1,10 @@
 .btn {
   @apply flex flex-shrink-0 justify-center items-center rounded-full font-bold bg-transparent transition-all hover:opacity-50 gap-2;
   @apply text-sm font-semibold;
+
+  &:disabled {
+    @apply opacity-50;
+  }
 }
 
 .btn.btn_sm {

@@ -10,7 +10,7 @@ export const useOrder = () => {
     dispatch(setOrderProducts([...state.orderProducts, item]))
 
   const remove = (id: string) => {
-    const products = state.orderProducts.filter(item => item.id === id)
+    const products = state.orderProducts.filter(item => item.id !== id)
     return dispatch(setOrderProducts(products))
   }
 
@@ -28,10 +28,16 @@ export const useOrder = () => {
     return dispatch(setOrderProducts(products))
   }
 
+  const checkout = () => {
+    dispatch(setOrderProducts([]))
+    console.log('checkout')
+  }
+
   return {
     order: state.orderProducts,
     add,
     remove,
-    edit
+    edit,
+    checkout
   }
 }

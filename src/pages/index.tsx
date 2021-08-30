@@ -7,7 +7,7 @@ import { ListProducts } from '@/components/containers/Products/List'
 
 export default function Home() {
   return (
-    <div className="container lg:max-w-screen-lg">
+    <div className="container g:max-w-screen-lg mx-auto">
       <Head>
         <title>Commerce</title>
         <link rel="icon" href="/favicon.ico" />
@@ -16,7 +16,7 @@ export default function Home() {
       <main className="p-6">
         <OfferSection
           productName="Apple Watch"
-          productImage="/images/apple-watch.png"
+          productImage="https://firebasestorage.googleapis.com/v0/b/tac-commerce.appspot.com/o/apple-watch.png?alt=media&token=4da4fb22-3bf5-4a9f-b5a2-0417f08101a6"
           off={15}
         />
         <div className="pt-6">
