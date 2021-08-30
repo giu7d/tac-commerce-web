@@ -22,7 +22,7 @@ export const ListItemsOrder = () => {
 
   if (!order.order.length)
     return (
-      <div className="flex flex-col gap-6 m-8 p-6 rounded-3xl items-center bg-blue-50">
+      <div className="flex flex-col gap-6 m-8 p-6 rounded-3xl items-center bg-blue-50 md:max-w-xl md:mx-auto">
         <Image src={{ src: '/images/cart.png', width: 150, height: 150 }} />
         <span className="text-gray-800 font-semibold text-center">
           <b>Insira pelo menos um produto</b> no carrinho para continuar.

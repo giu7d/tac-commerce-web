@@ -1,20 +1,29 @@
 .offer {
   @apply flex flex-row rounded-3xl overflow-visible justify-between;
   @apply bg-gradient-to-br from-green-300 to-green-100 text-white;
+  @apply md:max-w-4xl md:mx-auto;
 
   .offer_content {
     @apply p-6;
+    @apply md:p-12;
+    @apply lg:flex lg:flex-col-reverse lg:gap-6;
 
     h2 {
       @apply text-3xl font-bold font-serif uppercase;
+      @apply md:text-4xl;
+      @apply lg:text-5xl;
     }
 
     h3 {
       @apply text-lg font-semibold italic font-serif capitalize;
+      @apply md:text-3xl;
+      @apply lg:text-5xl lg:font-normal;
     }
 
     h4 {
       @apply text-6xl font-bold;
+      @apply md:text-8xl;
+      @apply lg:text-9xl;
 
       span {
         @apply text-3xl font-semibold;
@@ -24,5 +33,7 @@
 
   .offer_image {
     @apply transform translate-y-6 scale-125;
+    @apply md:-translate-x-10 md:translate-y-16 md:scale-150;
+    @apply lg:translate-y-32 lg:-translate-x-40;
   }
 }

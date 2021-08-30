@@ -3,7 +3,7 @@
 }
 
 .product_card_cover {
-  @apply flex items-center justify-center p-6;
+  @apply flex items-center justify-center p-6 cursor-pointer;
 }
 
 .product_card_content {

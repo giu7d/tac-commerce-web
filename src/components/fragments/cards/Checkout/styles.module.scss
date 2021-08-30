@@ -1,5 +1,5 @@
 .checkout_card {
-  @apply fixed bottom-0 transform scale-95;
+  @apply fixed bottom-0 transform scale-95 md:max-w-xl md:scale-100;
   @apply flex flex-col gap-6 p-6 w-full rounded-3xl justify-between;
   @apply bg-gray-800 text-white;
 

@@ -32,7 +32,7 @@ export const ListProducts = () => {
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-6 mx-auto  md:flex-row md:flex-wrap md:justify-center md:gap-12">
       {products.map(product => (
         <ProductCard
           key={product.id}

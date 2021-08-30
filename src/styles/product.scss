@@ -1,4 +1,5 @@
 .product_buy {
-  @apply flex flex-row p-6 w-full fixed bottom-0 rounded-3xl justify-between transform scale-95;
+  @apply flex flex-row p-6 w-full fixed left-0 bottom-0 rounded-3xl justify-between transform scale-95;
+  @apply md:relative md:m-0 md:scale-100;
   @apply bg-gray-800 text-white;
 }
