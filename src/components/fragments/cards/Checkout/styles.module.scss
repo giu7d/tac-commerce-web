@@ -1,9 +1,20 @@
 .checkout_card {
-  @apply fixed bottom-0 transform scale-95 md:max-w-xl md:scale-100;
-  @apply flex flex-col gap-6 p-6 w-full rounded-3xl justify-between;
+  @apply flex flex-col gap-12 p-6 w-full rounded-3xl justify-between;
   @apply bg-gray-800 text-white;
+  @apply fixed bottom-0 left-0 transform scale-95;
+  @apply md:scale-100 md:relative md:w-full md:mt-12;
+  @apply lg:scale-100  lg:max-w-xs;
 
   .checkout_card_content {
     @apply flex flex-row justify-between;
+  }
+
+  .checkout_card_actions {
+    @apply flex flex-row gap-4 justify-end;
+    @apply lg:flex-col;
+
+    button {
+      @apply flex flex-1;
+    }
   }
 }

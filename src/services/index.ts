@@ -1,7 +1,12 @@
 import Axios from 'axios'
 import jwt from 'jsonwebtoken'
 import { Product } from '@/models/Product'
-import { IAccountResponse, IAuthResponse, IProductResponse } from './services'
+import {
+  IAccountResponse,
+  IAuthResponse,
+  IProductResponse,
+  ITokenPayload
+} from './services'
 import { Account } from '@/models/Account'
 
 const { NEXT_PUBLIC_API_URL = '' } = process.env
@@ -30,7 +35,7 @@ export const authAccount = async (
 
   API.defaults.headers.authorization = `Bearer ${token}`
 
-  const { id } = jwt.decode(token) as { id: string }
+  const { id } = jwt.decode(token) as ITokenPayload
 
   return { id, token }
 }
@@ -40,7 +45,7 @@ export const getAccount = async (id: string): Promise<Account> => {
 
   return {
     ...account,
-    token: ''
+    token: API.defaults.headers.authorization
   }
 }
 

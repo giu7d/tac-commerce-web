@@ -1,0 +1,7 @@
+.page_container {
+  @apply container lg:max-w-screen-lg mx-auto;
+}
+
+.page_content {
+  @apply flex flex-col p-6 gap-12;
+}

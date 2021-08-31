@@ -16,7 +16,7 @@
 }
 
 .btn.btn_lg {
-  @apply px-6 py-4 gap-2 text-xl;
+  @apply px-6 py-3 gap-3 text-lg;
 }
 
 .btn.btn_icon {
@@ -35,8 +35,16 @@
   @apply bg-red-400 text-white;
 }
 
+.btn.btn_secondary.btn_secondary {
+  @apply bg-blue-400 text-white;
+}
+
 .btn.btn_primary {
   @apply bg-red-50 text-red-400;
+}
+
+.btn.btn_secondary {
+  @apply bg-blue-50 text-blue-400;
 }
 
 .btn.btn_number {

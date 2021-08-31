@@ -1,0 +1,6 @@
+.alert {
+  @apply flex flex-1 flex-col gap-6 p-6 rounded-3xl items-center justify-center;
+  @apply bg-gradient-to-br from-gray-100 to-gray-50;
+  @apply text-gray-800 font-semibold text-center;
+  @apply md:max-w-xl md:mx-auto md:p-12;
+}

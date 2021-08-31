@@ -1,6 +1,5 @@
 import Image from 'next/image'
 import React from 'react'
-import { FiX } from 'react-icons/fi'
 
 import { PriceTypography } from '@/components/fragments/typography/Price'
 import styles from './styles.module.scss'
@@ -8,15 +7,10 @@ import { OrderItem } from '@/models/OrderItem'
 
 interface IItemCardProps {
   item: OrderItem
-  onDelete?: () => void
-  onUpdateQuantity?: Function
+  renderActions: React.ReactElement
 }
 
-export const ItemCard: React.FC<IItemCardProps> = ({
-  item,
-  children,
-  onDelete = () => {}
-}) => (
+export const ItemCard: React.FC<IItemCardProps> = ({ item, renderActions }) => (
   <div className={styles.item_card}>
     <div
       className={`${styles.item_card_cover} bg-${item.product.thumbnailPrimaryColor}-100 `}
@@ -36,11 +30,6 @@ export const ItemCard: React.FC<IItemCardProps> = ({
       </div>
       <PriceTypography value={item.price} size="sm" />
     </div>
-    <div className={styles.item_card_actions}>
-      <div className="btn btn_icon text-red-500" onClick={onDelete}>
-        <FiX />
-      </div>
-      {children}
-    </div>
+    <div className={styles.item_card_actions}>{renderActions}</div>
   </div>
 )

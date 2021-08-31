@@ -1,9 +1,11 @@
 import React from 'react'
-import Image from 'next/image'
+
+import { FiX } from 'react-icons/fi'
 import { ItemCard } from '@/components/fragments/cards/Item'
 import { useOrder } from '@/hooks/useOrder'
 import { OrderItem } from '@/models/OrderItem'
 import { NumberButton } from '@/components/fragments/buttons/Number'
+import { AlertCard } from '@/components/fragments/cards/Alert'
 
 export const ListItemsOrder = () => {
   const order = useOrder()
@@ -22,29 +24,34 @@ export const ListItemsOrder = () => {
 
   if (!order.order.length)
     return (
-      <div className="flex flex-col gap-6 m-8 p-6 rounded-3xl items-center bg-blue-50 md:max-w-xl md:mx-auto">
-        <Image src={{ src: '/images/cart.png', width: 150, height: 150 }} />
-        <span className="text-gray-800 font-semibold text-center">
-          <b>Insira pelo menos um produto</b> no carrinho para continuar.
-        </span>
-      </div>
+      <AlertCard src="/images/cart.png">
+        <b>Insira pelo menos um produto</b> no carrinho para continuar.
+      </AlertCard>
     )
 
   return (
-    <div className="flex flex-col gap-6 p-6">
+    <div className="flex flex-col gap-6 w-full">
       {order.order.map(item => (
         <ItemCard
           key={item.id}
           item={item}
-          onDelete={() => handleDelete(item.id)}
-        >
-          <NumberButton
-            onMinus={() => updateQuantity(item, -1)}
-            onPlus={() => updateQuantity(item, 1)}
-          >
-            {item.quantity}
-          </NumberButton>
-        </ItemCard>
+          renderActions={
+            <>
+              <div
+                className="btn btn_icon text-red-500"
+                onClick={() => handleDelete(item.id)}
+              >
+                <FiX />
+              </div>
+              <NumberButton
+                onMinus={() => updateQuantity(item, -1)}
+                onPlus={() => updateQuantity(item, 1)}
+              >
+                {item.quantity}
+              </NumberButton>
+            </>
+          }
+        />
       ))}
     </div>
   )

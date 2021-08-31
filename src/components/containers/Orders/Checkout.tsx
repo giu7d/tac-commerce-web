@@ -20,7 +20,7 @@ export const Checkout = () => {
 
   const goToLogin = () => router.push('/login')
 
-  const checkout = () => {
+  const onCheckout = () => {
     order.checkout()
     router.push('/')
   }
@@ -28,19 +28,11 @@ export const Checkout = () => {
   if (!order.order.length) return <div />
 
   return (
-    <CheckoutCard total={calculateTotalOrder()}>
-      {!account.account ? (
-        <button
-          className="btn btn_lg btn_solid btn_primary"
-          onClick={goToLogin}
-        >
-          Fazer LogIn
-        </button>
-      ) : (
-        <button className="btn btn_lg btn_solid btn_primary" onClick={checkout}>
-          Comprar
-        </button>
-      )}
-    </CheckoutCard>
+    <CheckoutCard
+      login={!!account.account}
+      total={calculateTotalOrder()}
+      onClickLogin={goToLogin}
+      onClickCheckout={onCheckout}
+    />
   )
 }

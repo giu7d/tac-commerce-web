@@ -25,3 +25,8 @@ export interface IAccountResponse {
   email: string
   isAdmin: boolean
 }
+
+export interface ITokenPayload {
+  id: string
+  email: string
+}
