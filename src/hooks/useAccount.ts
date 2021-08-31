@@ -8,28 +8,20 @@ export const useAccount = () => {
   const { state, dispatch } = useContext(ApplicationContext)
 
   const login = async (email: string, password: string) => {
-    try {
-      const auth = await authAccount(email, password)
-      const account = await getAccount(auth.id)
+    const auth = await authAccount(email, password)
+    const account = await getAccount(auth.id)
 
-      account.token = auth.token
+    account.token = auth.token
 
-      localStorage.setItem('token', auth.token)
+    localStorage.setItem('token', auth.token)
 
-      console.log(account)
-      dispatch(setAccount(account))
-    } catch (error) {
-      console.warn(error)
-    }
+    console.log(account)
+    dispatch(setAccount(account))
   }
 
   const logout = () => {
-    try {
-      localStorage.removeItem('token')
-      dispatch(reset())
-    } catch (error) {
-      console.warn(error)
-    }
+    localStorage.removeItem('token')
+    dispatch(reset())
   }
 
   return {

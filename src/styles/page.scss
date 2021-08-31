@@ -1,5 +1,5 @@
 .page_container {
-  @apply container lg:max-w-screen-lg mx-auto;
+  @apply container flex flex-col lg:max-w-screen-lg mx-auto min-h-screen;
 }
 
 .page_content {

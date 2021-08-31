@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useRouter } from 'next/router'
 
@@ -12,33 +12,39 @@ interface IForm {
 }
 
 export default function Login() {
+  const [isLoading, setIsLoading] = useState(false)
+  const [error, setError] = useState()
+  const { register, handleSubmit, formState } = useForm()
   const { login } = useAccount()
-  const { register, handleSubmit } = useForm()
   const router = useRouter()
 
   const onSubmit = async ({ email, password }: IForm) => {
     try {
-      if (!email) throw new Error('Informar email')
+      setIsLoading(true)
 
-      if (!password) throw new Error('Informar senha')
+      if (!email || !password) throw new Error()
 
       await login(email, password)
 
-      router.back()
-    } catch (error) {
-      console.warn(error)
+      return router.back()
+    } catch (err) {
+      setIsLoading(false)
+
+      if (err.isAxiosError) return setError(err.response.data?.message)
+
+      return setError(err.message)
     }
   }
 
   return (
-    <div className="container lg:max-w-screen-lg mx-auto">
+    <div className="page_container">
       <Header className="justify-center">
         <h2 className="text-gray-800 font-semibold font-serif text-xl">
           Log In
         </h2>
       </Header>
       <form
-        className="flex flex-1 flex-col p-6 gap-6 justify-center align-center"
+        className="page_content flex flex-1 justify-center md:w-96 md:mx-auto"
         onSubmit={handleSubmit(onSubmit)}
       >
         <Input
@@ -52,7 +58,17 @@ export default function Login() {
           type="password"
           {...register('password', { required: true })}
         />
-        <button className="btn btn_lg btn_solid btn_primary">Entrar</button>
+        {error && (
+          <p className="p-6 text-center font-semibold bg-red-50 text-red-500 rounded-3xl">
+            {error}
+          </p>
+        )}
+        <button
+          className="btn btn_lg btn_solid btn_primary"
+          disabled={isLoading && !formState.isValid}
+        >
+          Entrar
+        </button>
       </form>
     </div>
   )
