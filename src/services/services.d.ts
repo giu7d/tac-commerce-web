@@ -8,6 +8,7 @@ export interface IProductResponse {
     brand: string
     imageSrc: string
     thumbnailPrimaryColor: string
+    description: string
   }
   createdAt: string
   updatedAt: string

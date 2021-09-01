@@ -15,7 +15,6 @@ export const useAccount = () => {
 
     localStorage.setItem('token', auth.token)
 
-    console.log(account)
     dispatch(setAccount(account))
   }
 

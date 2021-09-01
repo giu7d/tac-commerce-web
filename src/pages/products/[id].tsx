@@ -16,16 +16,13 @@ export default function Product() {
   }
 
   return (
-    <div className="container g:max-w-screen-lg mx-auto">
+    <div className="page_container">
       <Header />
       <div className="flex flex-col gap-6 p-6 md:flex-row md:max-w-5xl md:mx-auto md:mt-12 md:justify-evenly md:items-center">
         <ProductSection product={product} />
         <div className="md:flex md:flex-col md:gap-12">
           <ParagraphSection title="Descrição">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-            ratione, voluptatum minima, quibusdam rem animi non cumque maiores
-            omnis sit accusamus repellendus nihil ea pariatur similique labore
-            fuga. Ducimus, maiores.
+            {product.description}
           </ParagraphSection>
           <BuyProduct />
         </div>

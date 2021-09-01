@@ -1,4 +1,4 @@
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { ApplicationContext } from '@/stores/ApplicationStore'
 import { OrderItem } from '@/models/OrderItem'
 import { setOrderProducts } from '@/stores/actions'
@@ -6,11 +6,38 @@ import { setOrderProducts } from '@/stores/actions'
 export const useOrder = () => {
   const { state, dispatch } = useContext(ApplicationContext)
 
-  const add = (item: OrderItem) =>
-    dispatch(setOrderProducts([...state.orderProducts, item]))
+  useEffect(() => {
+    _loadLocalStorage()
+  }, [])
+
+  const _loadLocalStorage = () => {
+    const localItems = localStorage.getItem('order') || '[]'
+    const items = JSON.parse(localItems)
+    dispatch(setOrderProducts(items))
+  }
+
+  const _persistLocalStorage = (items: OrderItem[]) =>
+    localStorage.setItem('order', JSON.stringify(items))
+
+  const _clearLocalStorage = () => localStorage.removeItem('order')
+
+  const add = (item: OrderItem) => {
+    const match = state.orderProducts.find(
+      el => el.product.id === item.product.id
+    )
+
+    if (match)
+      return edit(match.id, { quantity: item.quantity + match.quantity })
+
+    const products = [...state.orderProducts, item]
+
+    _persistLocalStorage(products)
+    return dispatch(setOrderProducts(products))
+  }
 
   const remove = (id: string) => {
     const products = state.orderProducts.filter(item => item.id !== id)
+    _persistLocalStorage(products)
     return dispatch(setOrderProducts(products))
   }
 
@@ -25,12 +52,13 @@ export const useOrder = () => {
 
     products[index] = product
 
+    _persistLocalStorage(products)
     return dispatch(setOrderProducts(products))
   }
 
   const checkout = () => {
     dispatch(setOrderProducts([]))
-    console.log('checkout')
+    _clearLocalStorage()
   }
 
   return {

@@ -4,5 +4,6 @@ export interface Product {
   brand: string
   price: string
   imageSrc: string
+  description: string
   thumbnailPrimaryColor: string
 }

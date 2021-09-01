@@ -8,6 +8,7 @@ import {
   ITokenPayload
 } from './services'
 import { Account } from '@/models/Account'
+import { description } from '@/utils'
 
 const { NEXT_PUBLIC_API_URL = '' } = process.env
 
@@ -55,5 +56,6 @@ const adaptsToProduct = (data: IProductResponse): Product => ({
   price: data.unitPrice.toString(),
   thumbnailPrimaryColor: data.additionalInformation.thumbnailPrimaryColor,
   imageSrc: data.additionalInformation.imageSrc,
-  brand: data.additionalInformation.brand
+  brand: data.additionalInformation.brand,
+  description: data.additionalInformation?.description || description
 })
